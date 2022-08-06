@@ -73,7 +73,7 @@ contract KToken is IERC20 {
         return true;
     }
 
-    function transferFrom(address owner, address recipient, uint256 amount) external override EnoughBalance(msg.sender, amount) EnoughAllowance(owner, msg.sender, amount) returns (bool) {
+    function transferFrom(address owner, address recipient, uint256 amount) external override EnoughBalance(owner, amount) EnoughAllowance(owner, msg.sender, amount) returns (bool) {
         balances[owner] -= amount;
         allowed[owner][msg.sender] -= amount;
         balances[recipient] += amount;
